@@ -85,6 +85,8 @@ var ExperimentRecorder = (function(){
         return recA.ts-recB.ts;
       });
 
+      endTime = new Date();
+
       _isRunning = false;
     },
 
@@ -279,7 +281,15 @@ var ExperimentRecorder = (function(){
 
 
 	eventsToCsv: function(){
-			return getEvents()
+		header = ['onset', 'event_type']
+
+		data = getEvents().map(function(row){
+			return [row.ts, row.label]
+		});
+
+	        exportToCsv('events', endTime, header, data)
+
+		return [keys].concat(data)
 			//return _record.filter(function(rec){
 			  //return rec.type === 'event';
 			//})
@@ -292,10 +302,10 @@ var ExperimentRecorder = (function(){
     pupilToCsv: function(){
             
 	    keys = getValKeys();
-	    data = [Array.from(keys)];
-	    data[0].splice(0, 0, 'timestamp')
+	    header = Array.from(keys);
+	    header.splice(0, 0, 'timestamp')
 
-	    data2 = getValues().map(function(d){
+	    data = getValues().map(function(d){
 				    row = [d.ts]
 		    console.log(row);
 		    console.log(keys);
@@ -305,11 +315,9 @@ var ExperimentRecorder = (function(){
 		    return row;
 	    });
 
-	    data = data.concat(data2)
-
-	    exportToCsv('pupil', data)
+	    exportToCsv('pupil', endTime, header, data)
 	    //console.log(getValKeys())
-	    return data;
+	    return [header].concat(data);
     },
 
     plot: function(){ // use plotly.js to trace the graph (cf https://plot.ly/javascript/line-charts/)

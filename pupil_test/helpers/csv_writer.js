@@ -1,4 +1,4 @@
-function exportToCsv(key, rows) {
+function exportToCsv(filename_key, timestamp, header, rows) {
     var processRow = function (row) {
         var finalVal = '';
         for (var j = 0; j < row.length; j++) {
@@ -17,16 +17,17 @@ function exportToCsv(key, rows) {
     };
 
     var csvFile = '';
+    csvFile += processRow(header);
+
     for (var i = 0; i < rows.length; i++) {
         csvFile += processRow(rows[i]);
     }
 
-    var today = new Date();
-    var date = today.getFullYear().toString()+(today.getMonth()+1)+today.getDate();
-    var time = today.getHours().toString() + today.getMinutes() + today.getSeconds();
+    var date = timestamp.getFullYear().toString()+(timestamp.getMonth()+1)+timestamp.getDate();
+    var time = timestamp.getHours().toString() + timestamp.getMinutes() + timestamp.getSeconds();
     var datetime = date + time
 
-    filename = key + '_' + datetime + '.csv'
+    filename = filename_key + '_' + datetime + '.csv'
 
     var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
     if (navigator.msSaveBlob) { // IE 10+

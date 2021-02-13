@@ -9,7 +9,7 @@ var Experiment = (function(){
   const _settings = {
     faceDetectedThreshold: 0.5, // between 0 (easy detection) and 1 (hard detection)
     nIterations: 10, // number of iterations black -> white
-    delay: 1500, // delay between 2 luminosity changes in ms
+    delay: 4000, // delay between 2 luminosity changes in ms
     resamplePeriod: 20 // used for measures time resampling (we need to resample the time to average values). In ms
   };
 

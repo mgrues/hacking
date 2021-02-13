@@ -77,6 +77,28 @@ button {
 
 
 /* EXPERIMENT TAB :*/
+/*#experiment-stopStartButton{*/
+	/*background-color: black;*/
+	/*padding: 16px;*/
+	/*[>position: absolute;<]*/
+	/*z-index: 3;*/
+	/*[>left: 20px;<]*/
+	/*bottom: 20px;*/
+	/*border: 1px solid white;*/
+	/*[>display: block;<]*/
+	/*float: left*/
+/*}*/
+#experiment-exportButton{
+	background-color: black;
+	padding: 16px;
+	position: fixed;
+	z-index: 3;
+	left: 100px;
+	bottom: 20px;
+	border: 1px solid white;
+}
+
+
 #experiment-stopStartButton{
 	background-color: black;
 	padding: 16px;
@@ -86,6 +108,7 @@ button {
 	bottom: 20px;
 	border: 1px solid white;
 }
+
 #experiment-stopStartButton:hover{
 	color: #fff;
 	background-color: #333;
@@ -97,6 +120,7 @@ button {
 	width: 100vw;
 	height: 100vh;
 	display: none;
+	text-align: left;
 }
 .experiment-notice {
 	text-align: center;

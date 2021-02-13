@@ -61,7 +61,10 @@
         this circle
         </div>
       </div>
-      <button id='experiment-stopStartButton' onClick='Experiment.toggle()'>START EXPERIMENT</button>
+      <div class='button box', style='bottom: 20px; position: absolute', id='box-buttons'>
+       <button id='experiment-stopStartButton' onClick='Experiment.toggle()'>START EXPERIMENT</button>
+       <button id='experiment-exportButton'>Export data</button>
+      </div>
     </div>
 
     <div class='tabContent' style='display: none' id='tabContent-results'>

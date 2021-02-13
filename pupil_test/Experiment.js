@@ -8,7 +8,7 @@ var Experiment = (function(){
   // experiment settings:
   const _settings = {
     faceDetectedThreshold: 0.5, // between 0 (easy detection) and 1 (hard detection)
-    nIterations: 10, // number of iterations black -> white
+    nIterations: 2, // number of iterations black -> white
     delay: 4000, // delay between 2 luminosity changes in ms
     resamplePeriod: 20 // used for measures time resampling (we need to resample the time to average values). In ms
   };
@@ -137,6 +137,8 @@ var Experiment = (function(){
       }
       _isRunning = true;
       _domButton.innerHTML = 'STOP THE EXPERIMENT';
+      //experiment-stopStartButton.innerHTML = 'stop';
+      document.getElementById('experiment-stopStartButton').innerHTML = 'stop'
       _domScreen.style.display = 'block';
       _cyclesCounter = 0;
       ExperimentRecorder.start();
@@ -153,6 +155,8 @@ var Experiment = (function(){
       _domButton.innerHTML = 'START THE EXPERIMENT';
       _domScreen.style.display = 'none';
       ExperimentRecorder.end();
+      document.getElementById('experiment-exportButton').addEventListener('click', ExperimentRecorder.pupilToCsv())
+      document.getElementById('experiment-exportButton').addEventListener('click', ExperimentRecorder.eventsToCsv())
     }
   } //end that
   return that;
